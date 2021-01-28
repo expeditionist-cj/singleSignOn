@@ -1,0 +1,45 @@
+{
+  "compilerOptions": { //compilerOptions用来配置编译选项
+    "incremental": true, // TS编译器在第一次编译之后会生成一个存储编译信息的文件,第二次编译会在第一次的基础上进行增量编译，可以提高编译的速度
+    "tsBuildInfoFile": "./buildFile", // 增量编译文件的存储位置
+    "target": "esnext", //指定ECMAScript目标版本 "ES3"（默认）， "ES5"， "ES6"/ "ES2015"， "ES2016"， "ES2017"或 "ESNext"。
+    "module": "esnext", //指定生成哪个模块系统代码： "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"。
+    "strict": true, // 开启所有严格的类型检查 
+    "jsx": "preserve", //在 .tsx 中支持 JSX ：React 或 Preserve
+    "outDir": "./dist", // 指定输出目录
+    // "removeComments":true, // 删除注释
+    "importHelpers": true,// 通过tslib引入helper函数，文件必须是模块
+    "moduleResolution": "node", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
+    "experimentalDecorators": true, //启用实验性的ES装饰器。
+    "skipLibCheck": true,
+    "esModuleInterop": true,  // 允许export=导出，由import from 导入
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,// 生成目标文件的sourceMap文件
+    "baseUrl": ".",// 解析非相对模块的基地址，默认是当前目录
+    "types": [ // 加载的声明文件包,如果指定了某个值， 她会在 typeRoots 下找这个包，找到了就只加载这个包
+      "webpack-env"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [ // 编译时引入的 ES 功能库，
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  //使用 include 和 exclude 来指定和排除待编译文件
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
