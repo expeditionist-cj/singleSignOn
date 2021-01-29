@@ -13,9 +13,9 @@ console.log(token, 999);
 
 router.beforeEach((to: any, from: any, next: any): any => {
     console.log(to, Cookies.get('token'));
-    // if (to.name !== "Login" && Cookies.get('token') === undefined) {
-    //     next({ path: '/Login' });
-    // } else {
-    //     next()
-    // }   
+    if (to.name !== "Login" && Cookies.get('token') === undefined) {
+        next({ path: '/Login' });
+    } else {
+        next()
+    }
 })
